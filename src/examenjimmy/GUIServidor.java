@@ -258,10 +258,13 @@ Archivo objArchivo = new Archivo();
     private void JBDecifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBDecifrarActionPerformed
         //Aqui pa que muestre el mensaje descifrado en el text area del mensaje xD, pero no se como ponerlo x2
         //Aqui tiene que mostar el mensaje
-        ld.getDescifrado();
+        String cifrado = String.valueOf(ListaDatitos.get(0).getMsjCifrado());
+        String descifrado = String.valueOf(ListaDatitos.get(0).getMensaje());
         
+        ld.getDescifrado();
         ListaDatitos = objArchivo.leerCif(); 
-        JTAMensaje.setText(String.valueOf(ListaDatitos.get(0).getMsjCifrado()));
+        
+        JTAMensaje.setText("Mensaje cifrado: "+cifrado+"\nMensaje decifrado: "+descifrado);
     }//GEN-LAST:event_JBDecifrarActionPerformed
 
 Rsa rsa = new Rsa();
@@ -300,10 +303,19 @@ BigInteger[] msjCifrado;
     }//GEN-LAST:event_JBCifrarActionPerformed
 
     private void JBObtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBObtenerActionPerformed
-        //Aqui para cuando usemos pull para cifrar
+        
         ld.getDatosArch();
-        //Aqui no se como poner lo de los sout en los campos, puedes veeer? pofavo uwu
-        //Osea nomas que ponga los datos en los campos uwu
+         ListaDatitos = objArchivo.leerCif();
+        
+        emisortxt.setText(ListaDatitos.get(0).getEmisor());
+        //JTFE.setText(ListaDatitos.get(0).getE().toString());
+        JTFD.setText(ListaDatitos.get(0).getD().toString());
+        JTFN.setText(ListaDatitos.get(0).getN().toString());
+        JTFP.setText(ListaDatitos.get(0).getP().toString());
+        JTFPhi_n.setText(ListaDatitos.get(0).getTotient().toString());
+        JTFQ.setText(ListaDatitos.get(0).getQ().toString());
+        JTAMensaje.setText("");
+        
     }//GEN-LAST:event_JBObtenerActionPerformed
 
     private void guardarRSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarRSAActionPerformed
