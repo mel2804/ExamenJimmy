@@ -1,6 +1,7 @@
 package examenjimmy;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 /**
  *
@@ -251,13 +252,18 @@ public class GUIServidor extends javax.swing.JFrame {
     private void JTFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFDActionPerformed
-
+ListaDatos ld = new ListaDatos();
+ArrayList<Datitos> ListaDatitos;
+Archivo objArchivo = new Archivo();
     private void JBDecifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBDecifrarActionPerformed
         //Aqui pa que muestre el mensaje descifrado en el text area del mensaje xD, pero no se como ponerlo x2
         //Aqui tiene que mostar el mensaje
         ld.getDescifrado();
+        
+        ListaDatitos = objArchivo.leerCif(); 
+        JTAMensaje.setText(String.valueOf(ListaDatitos.get(0).getMsjCifrado()));
     }//GEN-LAST:event_JBDecifrarActionPerformed
-ListaDatos ld = new ListaDatos();
+
 Rsa rsa = new Rsa();
 BigInteger n,q,p, totien,e,d;
 BigInteger[] msjCifrado;
@@ -271,9 +277,7 @@ BigInteger[] msjCifrado;
         this.JTFPhi_n.setText("0");
         this.JTFQ.setText("0");
         this.JTAMensaje.setText("");
-        Datos data = new Datos(tamanoPrimo,JTFP,JTFQ,JTFN,JTFPhi_n,JTFD,JTFE,JTAMensaje);  
-        //Este lo puse aqui abajo para que muestres el mensaje cuando se cifra y eso uwu
-        ld.getDescifrado();
+        Datos data = new Datos(tamanoPrimo,JTFP,JTFQ,JTFN,JTFPhi_n,JTFD,JTFE,JTAMensaje);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTFEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFEActionPerformed
@@ -289,7 +293,7 @@ BigInteger[] msjCifrado;
         e = new BigInteger(JTFE.getText());
         d = new BigInteger(JTFD.getText());
         System.out.println("n: "+n);
-        System.out.println("q: "+n);
+        System.out.println("q: "+q);
         msjCifrado = rsa.encriptar(JTAMensaje.getText(),e,n);
         ld.addCifrado(Integer.parseInt(JTFTamano_numero.getText()), n, q, p, totien, e, d, emisortxt.getText(), Integer.parseInt(JTAMensaje.getText()), msjCifrado);
         ld.grabarCifrado();
@@ -312,6 +316,7 @@ BigInteger[] msjCifrado;
         d = new BigInteger(JTFD.getText());
         System.out.println("n: "+n);
         System.out.println("q: "+n);
+        
         ld.addRSA(Integer.parseInt(JTFTamano_numero.getText()), n, q, p, totien, e, d, emisortxt.getText());
         ld.grabarRSA();
     }//GEN-LAST:event_guardarRSAActionPerformed

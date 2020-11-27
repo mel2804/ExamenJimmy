@@ -21,7 +21,7 @@ public class ListaDatos implements Serializable{
     public void addRSA(int tamPrimo, BigInteger n, BigInteger q, BigInteger p, BigInteger totient, BigInteger e, BigInteger d, String emisor){
         Datos = objArchivo.leer();
         Datitos obj = new Datitos(tamPrimo, n, q, p, totient, e,  d, emisor);
-        Datos.set(0,obj);
+        Datos.add(obj);
     }
     
     public void addCifrado(int tamPrimo, BigInteger n, BigInteger q, BigInteger p, BigInteger totient, BigInteger e, BigInteger d, String emisor, int mensaje, BigInteger[] msjCifrado){
