@@ -298,17 +298,17 @@ BigInteger[] msjCifrado;
         System.out.println("n: "+n);
         System.out.println("q: "+q);
         msjCifrado = rsa.encriptar(JTAMensaje.getText(),e,n);
-        ld.addCifrado(Integer.parseInt(JTFTamano_numero.getText()), n, q, p, totien, e, d, emisortxt.getText(), Integer.parseInt(JTAMensaje.getText()), msjCifrado);
+        ld.addCifrado(0, n, q, p, totien, e, d, emisortxt.getText(), Integer.parseInt(JTAMensaje.getText()), msjCifrado);
         ld.grabarCifrado();
     }//GEN-LAST:event_JBCifrarActionPerformed
 
     private void JBObtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBObtenerActionPerformed
         
         ld.getDatosArch();
-         ListaDatitos = objArchivo.leerCif();
+         ListaDatitos = objArchivo.leer();
         
         emisortxt.setText(ListaDatitos.get(0).getEmisor());
-        //JTFE.setText(ListaDatitos.get(0).getE().toString());
+        JTFE.setText(ListaDatitos.get(0).getE().toString());
         JTFD.setText(ListaDatitos.get(0).getD().toString());
         JTFN.setText(ListaDatitos.get(0).getN().toString());
         JTFP.setText(ListaDatitos.get(0).getP().toString());
