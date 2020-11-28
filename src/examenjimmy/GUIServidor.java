@@ -258,12 +258,11 @@ Archivo objArchivo = new Archivo();
     private void JBDecifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBDecifrarActionPerformed
         //Aqui pa que muestre el mensaje descifrado en el text area del mensaje xD, pero no se como ponerlo x2
         //Aqui tiene que mostar el mensaje
+        ListaDatitos = objArchivo.leerCif(); 
         String cifrado = String.valueOf(ListaDatitos.get(0).getMsjCifrado());
         String descifrado = String.valueOf(ListaDatitos.get(0).getMensaje());
         
         ld.getDescifrado();
-        ListaDatitos = objArchivo.leerCif(); 
-        
         JTAMensaje.setText("Mensaje cifrado: "+cifrado+"\nMensaje decifrado: "+descifrado);
     }//GEN-LAST:event_JBDecifrarActionPerformed
 
