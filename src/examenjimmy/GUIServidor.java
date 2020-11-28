@@ -263,7 +263,7 @@ Archivo objArchivo = new Archivo();
         String descifrado = String.valueOf(ListaDatitos.get(0).getMensaje());
         
         ld.getDescifrado();
-        JTAMensaje.setText("Mensaje cifrado: "+cifrado+"\nMensaje decifrado: "+descifrado);
+        JTAMensaje.setText("Mensaje cifrado: "+cifrado+"\nMensaje descifrado: "+descifrado);
     }//GEN-LAST:event_JBDecifrarActionPerformed
 
 Rsa rsa = new Rsa();
